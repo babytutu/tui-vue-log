@@ -1,5 +1,11 @@
+interface AppOptions {
+  border?: string
+  background?: string[]
+  style?: string
+}
+
 export default {
-  install: (app: any, options: any) => {
+  install: (app: any, options?: AppOptions): void => {
     const {
       border = '4px',
       background = ['#606060', '#409EFF'],
@@ -13,16 +19,17 @@ export default {
     /**
      * console
      * @param {string} key key
-     * @param {any} value value
+     * @param {any} args args
      */
-    function log(key: string, value: any) {
+    function log(key: string, ...args: any) {
       let filePath = ''
       if (version > 2) {
-        const [route] = app?.config?.globalProperties?.$route?.matched
+        const [route = {}] =
+          app?.config?.globalProperties?.$route?.matched || []
         filePath = route?.components?.default?.__file || ''
       }
       console.log(
-        `%c${key}%c${JSON.stringify(value)}`, // Console Message
+        `%c${key}%c${JSON.stringify(args)}`, // Console Message
         `border-radius: ${border} 0 0 ${border}; background: ${background[0]}; ${css}`,
         `border-radius: 0 ${border} ${border} 0; background: ${background[1]}; ${css}`,
         filePath.replace(/.*\/src(.*$)/, '$1')

@@ -48,7 +48,7 @@ vue2 & vue3
 ### vue2
 
 ```js
-this.log('title', 123)
+this.log('title', 123, 456)
 ```
 
 ### vue3
@@ -58,7 +58,7 @@ import { ref, inject } from 'vue'
 
 const log: any = inject('log')
 
-log('title', 123)
+log('title', 123, 456)
 
 log('object', {
   name: 'abc',
@@ -86,7 +86,7 @@ log('object', {
     new Vue({
       el: '#app',
       created () {
-        this.log('Hello World!', { name: 'hehe' })
+        this.log('Hello World!', { name: 'hehe' }, 'abc')
       },
     })
   </script>

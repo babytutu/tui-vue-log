@@ -3,9 +3,13 @@ import { defineConfig } from 'vite'
 import banner from 'vite-plugin-banner'
 import pkg from './package.json'
 import babel from '@rollup/plugin-babel'
+import eslint from 'vite-plugin-eslint'
 
 export default defineConfig({
   plugins: [
+    eslint({
+      include: ['src/*.ts'],
+    }),
     banner(
       `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * homepage: ${pkg.homepage}\n */`
     ),

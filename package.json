@@ -1,6 +1,6 @@
 {
   "name": "tui-vue-log",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue log tool",
   "author": "babytutu",
   "homepage": "https://github.com/babytutu/tui-vue-log",
@@ -26,8 +26,13 @@
   "devDependencies": {
     "@babel/preset-env": "^7.22.9",
     "@rollup/plugin-babel": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "typescript": "^5.1.6",
     "vite": "^4.4.3",
-    "vite-plugin-banner": "^0.7.0"
+    "vite-plugin-banner": "^0.7.0",
+    "vite-plugin-eslint": "^1.8.1"
   },
   "bugs": {
     "url": "https://github.com/babytutu/tui-vue-log/issues"
