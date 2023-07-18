@@ -102,3 +102,34 @@ log('object', {
 |style|string|padding: 4px 8px; color: #fff;|css|
 |background|array|['#606060', '#409EFF']|colors|
 |border|string|4px|border width|
+|display|boolean|true|show or not|
+
+### display
+
+- Vite
+
+import.meta.env.MODE
+
+> By default, the dev server (dev command) runs in development mode and the build command runs in production mode.
+
+```ts
+app.use(log, {
+  // show only in development mode
+  display: import.meta.env.MODE === 'development',
+})
+```
+
+- Webpack
+
+process.env.NODE_ENV
+
+> Providing the mode configuration option tells webpack to use its built-in optimizations accordingly.
+
+> string = 'production': 'none' | 'development' | 'production'
+
+```ts
+app.use(log, {
+  // show only in development mode
+  display: process.env.NODE_ENV === 'development',
+})
+```

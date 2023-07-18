@@ -2,6 +2,7 @@ interface AppOptions {
   border?: string
   background?: string[]
   style?: string
+  display?: boolean
 }
 
 export default {
@@ -10,6 +11,7 @@ export default {
       border = '4px',
       background = ['#606060', '#409EFF'],
       style,
+      display = true,
     } = options || {}
 
     const css = style || 'padding: 4px 8px; color: #fff;'
@@ -28,12 +30,13 @@ export default {
           app?.config?.globalProperties?.$route?.matched || []
         filePath = route?.components?.default?.__file || ''
       }
-      console.log(
-        `%c${key}%c${JSON.stringify(args)}`, // Console Message
-        `border-radius: ${border} 0 0 ${border}; background: ${background[0]}; ${css}`,
-        `border-radius: 0 ${border} ${border} 0; background: ${background[1]}; ${css}`,
-        filePath.replace(/.*\/src(.*$)/, '$1')
-      )
+      display &&
+        console.log(
+          `%c${key}%c${JSON.stringify(args)}`, // Console Message
+          `border-radius: ${border} 0 0 ${border}; background: ${background[0]}; ${css}`,
+          `border-radius: 0 ${border} ${border} 0; background: ${background[1]}; ${css}`,
+          filePath.replace(/.*\/src(.*$)/, '$1')
+        )
     }
 
     if (version > 2) {
