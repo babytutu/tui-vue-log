@@ -26,9 +26,10 @@ export default {
     function log(key: string, ...args: any) {
       let filePath = ''
       if (version > 2) {
-        const [route = {}] =
-          app?.config?.globalProperties?.$route?.matched || []
-        filePath = route?.components?.default?.__file || ''
+        const matched = app?.config?.globalProperties?.$route?.matched || []
+        filePath = matched.length
+          ? matched[matched.length - 1]?.components?.default?.__file
+          : ''
       }
       display &&
         console.log(
